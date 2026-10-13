@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Turf — Own your turf</title>
+<meta name="description" content="Turf maps where your customers cluster and ranks every local sponsorship by the new customers it can win you. Get your Turf Audit in 7 days.">
+<meta property="og:title" content="Turf — Own your turf">
+<meta property="og:description" content="Turf maps where your customers cluster and ranks every local sponsorship by the new customers it can win you.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2314171F'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23F05A28'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --ink:#14171F; --ground:#F4F5F7; --surface:#FFFFFF; --muted:#5A6170; --body:#4A5060; --line:#E1E4E9;
+  --accent:#2B3FD6; --accent-soft:#EEF0FC; --heat:#F05A28; --amber:#F7A23B; --sand:#FBD38D;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --sans:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--ink)}
+a:focus-visible{outline:3px solid var(--heat);outline-offset:3px}
+h1,h2,h3,p{margin:0}
+
+.wrap{max-width:1180px;margin:0 auto;padding-inline:20px}
+.sec{padding-block:64px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.display{font-family:var(--display);font-stretch:108%;font-weight:800;line-height:1.02;letter-spacing:-.025em;text-wrap:balance}
+.h2{font-size:38px}
+.stack{display:flex;flex-direction:column}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 24px;border-radius:12px;text-decoration:none;font-weight:600;font-size:17px}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:#2234C0}
+.btn-light{background:#fff;color:var(--ink)}
+.btn-small{min-height:44px;padding:0 16px;border-radius:10px;font-size:14px;background:var(--ink);color:#fff}
+
+/* Header */
+.site-header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:16px}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none}
+.logo-word{font-family:var(--display);font-stretch:125%;font-weight:800;font-size:24px;letter-spacing:.02em}
+.logo-dot{width:9px;height:9px;border-radius:50%;background:var(--heat);margin-top:2px}
+.nav{display:flex;align-items:center;gap:28px}
+.nav-links{display:none;gap:28px;font-size:15px;font-weight:500}
+.nav-links a{text-decoration:none}
+.nav-links a:hover{color:var(--accent)}
+
+/* Hero */
+.hero{display:grid;gap:32px;padding-block:20px 56px}
+.hero-copy{gap:22px;min-width:0}
+.h1{font-family:var(--display);font-size:64px;font-stretch:112%;font-weight:850;line-height:.94;letter-spacing:-.035em;text-wrap:balance}
+.mark{background:linear-gradient(transparent 62%,var(--heat) 62%,var(--heat) 90%,transparent 90%)}
+.lede{font-size:19px;line-height:1.5;color:#3A404C;max-width:34ch}
+.hero-cta{gap:14px;max-width:420px}
+.assurances{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13.5px;color:var(--muted)}
+
+/* Map */
+.map-figure{margin:0;min-width:0}
+.map{position:relative;width:100%;aspect-ratio:400/440;border-radius:22px;overflow:hidden;background:#E7EAEE;box-shadow:0 1px 0 rgba(20,23,31,.06),0 24px 60px -24px rgba(20,23,31,.35)}
+.map svg{position:absolute;inset:0;width:100%;height:100%}
+.office{position:absolute;left:77%;top:64%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:6px}
+.office-dot{width:16px;height:16px;border-radius:50%;background:var(--accent);border:3px solid #fff;box-shadow:0 2px 6px rgba(20,23,31,.3)}
+.office-label{font-size:11.5px;font-weight:600;background:#fff;padding:3px 8px;border-radius:999px;box-shadow:0 2px 8px rgba(20,23,31,.15)}
+.pin{position:absolute;display:flex;align-items:center;gap:8px;background:#fff;padding:5px 10px 5px 5px;border-radius:999px;box-shadow:0 6px 18px -6px rgba(20,23,31,.35)}
+.pin-score{font-family:var(--mono);font-weight:600;font-size:13px;color:var(--ink);border-radius:999px;padding:3px 8px}
+.pin-label{font-size:12px;font-weight:600;white-space:nowrap}
+.pin-a{left:53%;top:34%}  .pin-a .pin-score{background:var(--heat)}
+.pin-b{left:5%;top:67.5%} .pin-b .pin-score{background:var(--amber)}
+.pin-c{right:1%;top:88%}  .pin-c .pin-score{background:#DADDE3}
+.legend{position:absolute;left:12px;bottom:12px;width:132px;background:rgba(255,255,255,.92);border-radius:10px;padding:8px 10px;display:flex;flex-direction:column;gap:5px}
+.legend-title{font-size:11px;font-weight:600}
+.legend-bar{height:6px;border-radius:3px;background:linear-gradient(90deg,var(--sand),var(--amber),var(--heat))}
+.legend-scale{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;color:var(--muted)}
+.map-caption{margin-top:10px;font-size:12.5px;color:var(--muted)}
+
+/* Problem */
+.problem{background:var(--ink);color:#fff}
+.problem .wrap{gap:20px}
+.problem .h2{max-width:16ch}
+.problem-body{font-size:19px;line-height:1.55;color:#C9CDD6;max-width:46ch}
+.problem-kicker{font-family:var(--display);font-stretch:108%;font-weight:800;font-size:30px;color:var(--heat)}
+
+/* Steps */
+.how{gap:36px}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:12px}
+.step-top{display:flex;align-items:center;justify-content:space-between}
+.step-icon{width:44px;height:44px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center}
+.step-num{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.step h3{font-family:var(--display);font-stretch:108%;font-weight:750;font-size:24px;letter-spacing:-.01em}
+.step p{font-size:16px;line-height:1.55;color:var(--body)}
+
+/* Who */
+.who{background:var(--surface);border-block:1px solid var(--line)}
+.who .wrap{gap:22px}
+.who .h2{max-width:18ch}
+.who-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);border-top:1px solid var(--line)}
+.who-list li{display:flex;align-items:center;gap:12px;padding-block:14px;border-bottom:1px solid var(--line);font-size:19px;font-weight:500}
+.who-list li::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--heat)}
+.who-note{font-size:17px;line-height:1.55;color:var(--body);max-width:52ch}
+
+/* Pricing */
+.pricing{display:grid;gap:28px}
+.pricing-intro{gap:12px}
+.pricing-intro p{font-size:17px;line-height:1.55;color:var(--body);max-width:40ch}
+.price-card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:28px;display:flex;flex-direction:column;gap:22px;box-shadow:0 24px 60px -32px rgba(20,23,31,.3)}
+.price{display:flex;align-items:baseline;gap:10px}
+.price-amount{font-family:var(--display);font-stretch:112%;font-weight:850;font-size:64px;letter-spacing:-.03em;line-height:1}
+.price-term{font-size:16px;color:var(--muted)}
+.includes{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.includes li{display:flex;gap:12px;align-items:flex-start;font-size:16px;line-height:1.45}
+.includes svg{flex:none;margin-top:1px}
+
+/* FAQ */
+.faq-sec{background:var(--surface);border-top:1px solid var(--line)}
+.faq-sec .wrap{gap:28px}
+.faq{margin:0;display:grid}
+.faq-item{padding-block:20px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
+.faq dt{font-weight:600;font-size:17px}
+.faq dd{margin:0;font-size:16px;line-height:1.55;color:var(--body)}
+
+/* Final CTA */
+.final{background-color:var(--accent);color:#fff;background-image:repeating-linear-gradient(-14deg,rgba(255,255,255,.07) 0 2px,transparent 2px 46px),repeating-linear-gradient(76deg,rgba(255,255,255,.07) 0 2px,transparent 2px 46px)}
+.final .wrap{gap:20px;align-items:flex-start}
+.h-cta{font-family:var(--display);font-size:52px;font-stretch:112%;font-weight:850;line-height:.96;letter-spacing:-.035em;text-wrap:balance}
+.final p{font-size:19px;line-height:1.5;color:#E4E8FF;max-width:38ch}
+
+/* Footer */
+.site-footer{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding-block:28px;font-size:14px;color:var(--muted)}
+.site-footer .logo-word{font-size:16px;color:var(--ink)}
+.footer-left,.footer-right{display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px}
+
+@media (min-width:900px){
+  .wrap{padding-inline:40px}
+  .sec{padding-block:104px}
+  .h2{font-size:56px}
+  .nav-links{display:flex}
+  .hero{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);align-items:center;gap:64px;padding-block:56px 104px}
+  .h1{font-size:108px}
+  .pin-label{font-size:13px}
+  .steps{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+  .who-list{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:48px}
+  .pricing{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);align-items:start;gap:64px}
+  .faq{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:56px}
+  .h-cta{font-size:88px}
+}
+</style>
+</head>
+<body>
+
+<header class="wrap site-header">
+  <a class="logo" href="#top" aria-label="Turf home">
+    <span class="logo-word">TURF</span><span class="logo-dot"></span>
+  </a>
+  <nav class="nav" aria-label="Main">
+    <div class="nav-links">
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+    </div>
+    <a class="btn btn-small" href="#pricing" data-cta>Get your audit</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <section class="wrap hero">
+    <div class="stack hero-copy">
+      <div class="eyebrow">Local sponsorship intelligence</div>
+      <h1 class="h1">Own your <span class="mark">turf.</span></h1>
+      <p class="lede">Turf maps where your customers cluster and ranks every local sponsorship (youth leagues, school events, local nonprofits) by the new customers it can win you.</p>
+      <div class="stack hero-cta">
+        <a class="btn btn-primary" href="#pricing" data-cta>Get your Turf Audit — $500</a>
+        <div class="assurances">
+          <span>One-week turnaround</span><span aria-hidden="true">·</span><span>Addresses only, no names needed</span><span aria-hidden="true">·</span><span>Money-back guarantee</span>
+        </div>
+      </div>
+    </div>
+
+    <figure class="map-figure">
+      <div class="map">
+        <svg viewBox="0 0 400 440" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <filter id="heatblur" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="20"/></filter>
+          </defs>
+          <rect width="400" height="440" fill="#E7EAEE"/>
+          <path d="M246 300 L332 284 L350 366 L258 380 Z" fill="#D8E2D6"/>
+          <path d="M40 330 L96 322 L104 372 L48 380 Z" fill="#D8E2D6"/>
+          <path d="M-20 118 C 60 142, 92 88, 152 108 S 262 172, 420 126" stroke="#C7D5E6" stroke-width="12" fill="none" stroke-linecap="round"/>
+          <g transform="rotate(-14 200 220)" stroke="#FFFFFF" stroke-width="4" fill="none">
+            <path d="M-60 -120V560M-14 -120V560M32 -120V560M78 -120V560M124 -120V560M170 -120V560M216 -120V560M262 -120V560M308 -120V560M354 -120V560M400 -120V560M446 -120V560"/>
+            <path d="M-120 -40H520M-120 4H520M-120 48H520M-120 92H520M-120 136H520M-120 180H520M-120 224H520M-120 268H520M-120 312H520M-120 356H520M-120 400H520M-120 444H520M-120 488H520"/>
+          </g>
+          <path d="M-20 304 C 100 272, 190 262, 420 206" stroke="#D2D7DE" stroke-width="17" fill="none"/>
+          <path d="M-20 304 C 100 272, 190 262, 420 206" stroke="#FFFFFF" stroke-width="12" fill="none"/>
+          <path d="M138 -20 C 150 120, 184 262, 214 460" stroke="#D2D7DE" stroke-width="17" fill="none"/>
+          <path d="M138 -20 C 150 120, 184 262, 214 460" stroke="#FFFFFF" stroke-width="12" fill="none"/>
+          <g filter="url(#heatblur)">
+            <circle cx="205" cy="232" r="96" fill="#F7A23B" opacity="0.32"/>
+            <circle cx="128" cy="300" r="70" fill="#F7A23B" opacity="0.28"/>
+            <circle cx="262" cy="160" r="62" fill="#F7A23B" opacity="0.3"/>
+            <circle cx="205" cy="236" r="56" fill="#F05A28" opacity="0.6"/>
+            <circle cx="246" cy="168" r="40" fill="#F05A28" opacity="0.52"/>
+            <circle cx="132" cy="296" r="38" fill="#F05A28" opacity="0.42"/>
+            <circle cx="96" cy="178" r="34" fill="#FBD38D" opacity="0.45"/>
+          </g>
+          <g fill="#14171F" stroke="#FFFFFF" stroke-width="1.2">
+            <circle cx="158" cy="250" r="2.4"/><circle cx="243" cy="216" r="2.4"/><circle cx="154" cy="234" r="2.4"/><circle cx="223" cy="278" r="2.4"/>
+            <circle cx="159" cy="187" r="2.4"/><circle cx="232" cy="254" r="2.4"/><circle cx="263" cy="273" r="2.4"/><circle cx="201" cy="226" r="2.4"/>
+            <circle cx="303" cy="225" r="2.4"/><circle cx="175" cy="193" r="2.4"/><circle cx="209" cy="242" r="2.4"/><circle cx="192" cy="234" r="2.4"/>
+            <circle cx="215" cy="262" r="2.4"/><circle cx="247" cy="244" r="2.4"/><circle cx="191" cy="188" r="2.4"/><circle cx="203" cy="161" r="2.4"/>
+            <circle cx="223" cy="173" r="2.4"/><circle cx="354" cy="164" r="2.4"/><circle cx="275" cy="124" r="2.4"/><circle cx="239" cy="187" r="2.4"/>
+            <circle cx="245" cy="178" r="2.4"/><circle cx="251" cy="134" r="2.4"/><circle cx="266" cy="140" r="2.4"/><circle cx="196" cy="279" r="2.4"/>
+            <circle cx="155" cy="296" r="2.4"/><circle cx="164" cy="276" r="2.4"/><circle cx="166" cy="292" r="2.4"/><circle cx="175" cy="317" r="2.4"/>
+            <circle cx="137" cy="269" r="2.4"/><circle cx="158" cy="312" r="2.4"/><circle cx="104" cy="184" r="2.4"/><circle cx="101" cy="160" r="2.4"/>
+            <circle cx="66" cy="166" r="2.4"/><circle cx="114" cy="223" r="2.4"/><circle cx="125" cy="210" r="2.4"/><circle cx="62" cy="194" r="2.4"/>
+            <circle cx="97" cy="135" r="2.4"/><circle cx="370" cy="343" r="2.4"/><circle cx="129" cy="375" r="2.4"/><circle cx="56" cy="416" r="2.4"/>
+          </g>
+        </svg>
+
+        <div class="office"><span class="office-dot"></span><span class="office-label">Your office</span></div>
+        <div class="pin pin-a"><span class="pin-score">92</span><span class="pin-label">School fall fair</span></div>
+        <div class="pin pin-b"><span class="pin-score">74</span><span class="pin-label">Youth soccer league</span></div>
+        <div class="pin pin-c"><span class="pin-score">18</span><span class="pin-label">Farmers market</span></div>
+        <div class="legend">
+          <span class="legend-title">Customer density</span>
+          <span class="legend-bar"></span>
+          <span class="legend-scale"><span>Low</span><span>High</span></span>
+        </div>
+      </div>
+      <figcaption class="map-caption">Each dot is a customer address. Numbers are Turf Scores: how many households on your turf each sponsorship reaches, per dollar.</figcaption>
+    </figure>
+  </section>
+
+  <section class="problem">
+    <div class="wrap sec stack">
+      <h2 class="display h2">Most local sponsorships are guesses.</h2>
+      <p class="problem-body">They get picked by whoever asked first, whose kid is on the team, or whatever you did last year. Nobody checks whether the families at that event live anywhere near your customers.</p>
+      <p class="problem-kicker">Turf does.</p>
+    </div>
+  </section>
+
+  <section id="how" class="wrap sec stack how">
+    <div class="stack" style="gap:12px">
+      <div class="eyebrow">How it works</div>
+      <h2 class="display h2">Three simple steps.</h2>
+    </div>
+    <ol class="steps">
+      <li class="step">
+        <div class="step-top">
+          <span class="step-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M12 17v-6"/><path d="m9 14 3-3 3 3"/></svg></span>
+          <span class="step-num">Step 1</span>
+        </div>
+        <h3>Map your turf.</h3>
+        <p>Export customer addresses from whatever system you use. No names, no phone numbers. We map where your customers cluster.</p>
+      </li>
+      <li class="step">
+        <div class="step-top">
+          <span class="step-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.6-6-10a6 6 0 0 1 12 0c0 4.4-6 10-6 10z"/><circle cx="12" cy="11" r="2.2"/></svg></span>
+          <span class="step-num">Step 2</span>
+        </div>
+        <h3>Find your spots.</h3>
+        <p>We research every sponsorship in your market: youth leagues, school fundraisers, chamber events, nonprofits. Each one gets a Turf Score based on how many households on your turf it reaches per dollar.</p>
+      </li>
+      <li class="step">
+        <div class="step-top">
+          <span class="step-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3z"/><path d="M21 14v.01"/><path d="M14 21h.01"/><path d="M17 21h4v-4"/></svg></span>
+          <span class="step-num">Step 3</span>
+        </div>
+        <h3>Lock in your spot. Track the return.</h3>
+        <p>You get your Turf Report: your customer heatmap, ranked spots with the math shown, our top 3 picks, and QR tracking so you can see the new customers each sponsorship brings in.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="who">
+    <div class="wrap sec stack">
+      <div class="eyebrow">Who it's for</div>
+      <h2 class="display h2">Businesses that serve their neighborhood.</h2>
+      <ul class="who-list">
+        <li>Dentists &amp; orthodontists</li>
+        <li>Insurance agents</li>
+        <li>Real estate teams</li>
+        <li>HVAC companies</li>
+        <li>Auto shops</li>
+      </ul>
+      <p class="who-note">Any local business with customers on a map and a sponsorship budget that currently runs on instinct.</p>
+    </div>
+  </section>
+
+  <section id="pricing" class="wrap sec pricing">
+    <div class="stack pricing-intro">
+      <div class="eyebrow">Pricing</div>
+      <h2 class="display h2">The Turf Audit</h2>
+      <p>One flat price. One week. Full refund if it's not useful.</p>
+    </div>
+    <div class="price-card">
+      <div class="price"><span class="price-amount">$500</span><span class="price-term">one time</span></div>
+      <ul class="includes">
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2B3FD6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4.5 4.5L19 7"/></svg><span><strong>Your Turf:</strong> customer heatmap with top ZIP codes and drive times</span></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2B3FD6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4.5 4.5L19 7"/></svg><span>Demographic overlay of your core clusters</span></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2B3FD6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4.5 4.5L19 7"/></svg><span>8–12 ranked spots with Turf Score and cost per household</span></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2B3FD6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4.5 4.5L19 7"/></svg><span>Top 3 picks with contact info</span></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2B3FD6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4.5 4.5L19 7"/></svg><span>QR tracking for your first spot</span></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2B3FD6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4.5 4.5L19 7"/></svg><span>Delivered in 7 days. Full refund if it's not useful.</span></li>
+      </ul>
+      <a class="btn btn-primary" href="#book" data-cta>Get your Turf Audit</a>
+    </div>
+  </section>
+
+  <section class="faq-sec">
+    <div class="wrap sec stack">
+      <h2 class="display h2">FAQ</h2>
+      <dl class="faq">
+        <div class="faq-item"><dt>What do you need from me?</dt><dd>A CSV file with one customer address per row. That's it. No names, no emails, no phone numbers.</dd></div>
+        <div class="faq-item"><dt>We don't sponsor anything yet. Is this still useful?</dt><dd>Even more so. You start with your best spots instead of spending a year guessing.</dd></div>
+        <div class="faq-item"><dt>How is this different from just asking around?</dt><dd>Asking around tells you what's available. Turf tells you what's worth it for your customers specifically. Two businesses on the same street can get completely different answers.</dd></div>
+        <div class="faq-item"><dt>Is my customer data safe?</dt><dd>Your customer list stays yours. Addresses are used only to build your audit. Never shared, never sold, never used for anything else.</dd></div>
+        <div class="faq-item"><dt>What happens after the audit?</dt><dd>You lock in your spot, we help you track the return, and most businesses re-run their audit each season as new sponsorships open up.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="book" class="final">
+    <div class="wrap sec stack">
+      <h2 class="h-cta">Audit your turf.</h2>
+      <p>Your customer map and ranked sponsorships in 7 days. Full refund if it's not useful.</p>
+      <a class="btn btn-light" href="#book" data-cta>Get your Turf Audit — $500</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap site-footer">
+  <div class="footer-left"><span class="logo-word">TURF</span><span>Own your turf.</span></div>
+  <div class="footer-right"><span>hello@getturf.co</span><span>© 2026 Turf</span></div>
+</footer>
+
+<script>
+  // Paste your form or Calendly link here. While it's empty, the buttons scroll to the pricing and final sections.
+  const AUDIT_URL = "https://cal.com/tal-brown-caq1kh/15min";
+  if (AUDIT_URL) {
+    document.querySelectorAll("[data-cta]").forEach(a => { a.href = AUDIT_URL; a.target = "_blank"; a.rel = "noopener"; });
+  }
+</script>
+</body>
+</html>
