@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terms of Service — Turf</title>
+<meta name="description" content="Terms of Service for Turf — Own your turf.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2314171F'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23F05A28'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2314171F'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23F05A28'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --ink:#14171F; --ground:#F4F5F7; --surface:#FFFFFF; --muted:#5A6170; --body:#4A5060; --line:#E1E4E9;
+  --accent:#2B3FD6; --accent-soft:#EEF0FC; --heat:#F05A28; --amber:#F7A23B; --sand:#FBD38D;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --sans:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--ink)}
+a:focus-visible{outline:3px solid var(--heat);outline-offset:3px}
+h1,h2,h3,p{margin:0}
+
+.wrap{max-width:1180px;margin:0 auto;padding-inline:20px}
+.sec{padding-block:64px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.display{font-family:var(--display);font-stretch:108%;font-weight:800;line-height:1.02;letter-spacing:-.025em;text-wrap:balance}
+.h2{font-size:38px}
+.stack{display:flex;flex-direction:column}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 24px;border-radius:12px;text-decoration:none;font-weight:600;font-size:17px}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:#2234C0}
+.btn-light{background:#fff;color:var(--ink)}
+.btn-small{min-height:44px;padding:0 16px;border-radius:10px;font-size:14px;background:var(--ink);color:#fff}
+
+/* Header */
+.site-header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:16px}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none}
+.logo-word{font-family:var(--display);font-stretch:125%;font-weight:800;font-size:24px;letter-spacing:.02em}
+.logo-dot{width:9px;height:9px;border-radius:50%;background:var(--heat);margin-top:2px}
+.nav{display:flex;align-items:center;gap:28px}
+.nav-links{display:none;gap:28px;font-size:15px;font-weight:500}
+.nav-links a{text-decoration:none}
+.nav-links a:hover{color:var(--accent)}
+
+/* Hero */
+.hero{display:grid;gap:32px;padding-block:20px 56px}
+.hero-copy{gap:22px;min-width:0}
+.h1{font-family:var(--display);font-size:64px;font-stretch:112%;font-weight:850;line-height:.94;letter-spacing:-.035em;text-wrap:balance}
+.mark{background:linear-gradient(transparent 62%,var(--heat) 62%,var(--heat) 90%,transparent 90%)}
+.lede{font-size:19px;line-height:1.5;color:#3A404C;max-width:34ch}
+.hero-cta{gap:14px;max-width:420px}
+.assurances{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13.5px;color:var(--muted)}
+
+/* Map */
+.map-figure{margin:0;min-width:0}
+.map{position:relative;width:100%;aspect-ratio:400/440;border-radius:22px;overflow:hidden;background:#E7EAEE;box-shadow:0 1px 0 rgba(20,23,31,.06),0 24px 60px -24px rgba(20,23,31,.35)}
+.map svg{position:absolute;inset:0;width:100%;height:100%}
+.office{position:absolute;left:77%;top:64%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:6px}
+.office-dot{width:16px;height:16px;border-radius:50%;background:var(--accent);border:3px solid #fff;box-shadow:0 2px 6px rgba(20,23,31,.3)}
+.office-label{font-size:11.5px;font-weight:600;background:#fff;padding:3px 8px;border-radius:999px;box-shadow:0 2px 8px rgba(20,23,31,.15)}
+.pin{position:absolute;display:flex;align-items:center;gap:8px;background:#fff;padding:5px 10px 5px 5px;border-radius:999px;box-shadow:0 6px 18px -6px rgba(20,23,31,.35)}
+.pin-score{font-family:var(--mono);font-weight:600;font-size:13px;color:var(--ink);border-radius:999px;padding:3px 8px}
+.pin-label{font-size:12px;font-weight:600;white-space:nowrap}
+.pin-a{left:53%;top:34%}  .pin-a .pin-score{background:var(--heat)}
+.pin-b{left:5%;top:67.5%} .pin-b .pin-score{background:var(--amber)}
+.pin-c{right:1%;top:88%}  .pin-c .pin-score{background:#DADDE3}
+.legend{position:absolute;left:12px;bottom:12px;width:132px;background:rgba(255,255,255,.92);border-radius:10px;padding:8px 10px;display:flex;flex-direction:column;gap:5px}
+.legend-title{font-size:11px;font-weight:600}
+.legend-bar{height:6px;border-radius:3px;background:linear-gradient(90deg,var(--sand),var(--amber),var(--heat))}
+.legend-scale{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;color:var(--muted)}
+.map-caption{margin-top:10px;font-size:12.5px;color:var(--muted)}
+
+/* Problem */
+.problem{background:var(--ink);color:#fff}
+.problem .wrap{gap:20px}
+.problem .h2{max-width:16ch}
+.problem-body{font-size:19px;line-height:1.55;color:#C9CDD6;max-width:46ch}
+.problem-kicker{font-family:var(--display);font-stretch:108%;font-weight:800;font-size:30px;color:var(--heat)}
+
+/* Steps */
+.how{gap:36px}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:12px}
+.step-top{display:flex;align-items:center;justify-content:space-between}
+.step-icon{width:44px;height:44px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center}
+.step-num{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.step h3{font-family:var(--display);font-stretch:108%;font-weight:750;font-size:24px;letter-spacing:-.01em}
+.step p{font-size:16px;line-height:1.55;color:var(--body)}
+
+/* Who */
+.who{background:var(--surface);border-block:1px solid var(--line)}
+.who .wrap{gap:22px}
+.who .h2{max-width:18ch}
+.who-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);border-top:1px solid var(--line)}
+.who-list li{display:flex;align-items:center;gap:12px;padding-block:14px;border-bottom:1px solid var(--line);font-size:19px;font-weight:500}
+.who-list li::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--heat)}
+.who-note{font-size:17px;line-height:1.55;color:var(--body);max-width:52ch}
+
+/* Pricing */
+.pricing{display:grid;gap:28px}
+.pricing-intro{gap:12px}
+.pricing-intro p{font-size:17px;line-height:1.55;color:var(--body);max-width:40ch}
+.price-card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:28px;display:flex;flex-direction:column;gap:22px;box-shadow:0 24px 60px -32px rgba(20,23,31,.3)}
+.price{display:flex;align-items:baseline;gap:10px}
+.price-amount{font-family:var(--display);font-stretch:112%;font-weight:850;font-size:64px;letter-spacing:-.03em;line-height:1}
+.price-term{font-size:16px;color:var(--muted)}
+.includes{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.includes li{display:flex;gap:12px;align-items:flex-start;font-size:16px;line-height:1.45}
+.includes svg{flex:none;margin-top:1px}
+
+/* FAQ */
+.faq-sec{background:var(--surface);border-top:1px solid var(--line)}
+.faq-sec .wrap{gap:28px}
+.faq{margin:0;display:grid}
+.faq-item{padding-block:20px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
+.faq dt{font-weight:600;font-size:17px}
+.faq dd{margin:0;font-size:16px;line-height:1.55;color:var(--body)}
+
+/* Final CTA */
+.final{background-color:var(--accent);color:#fff;background-image:repeating-linear-gradient(-14deg,rgba(255,255,255,.07) 0 2px,transparent 2px 46px),repeating-linear-gradient(76deg,rgba(255,255,255,.07) 0 2px,transparent 2px 46px)}
+.final .wrap{gap:20px;align-items:flex-start}
+.h-cta{font-family:var(--display);font-size:52px;font-stretch:112%;font-weight:850;line-height:.96;letter-spacing:-.035em;text-wrap:balance}
+.final p{font-size:19px;line-height:1.5;color:#E4E8FF;max-width:38ch}
+
+/* Footer */
+.site-footer{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding-block:28px;font-size:14px;color:var(--muted)}
+.site-footer .logo-word{font-size:16px;color:var(--ink)}
+.footer-left,.footer-right{display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px}
+
+@media (min-width:900px){
+  .wrap{padding-inline:40px}
+  .sec{padding-block:104px}
+  .h2{font-size:56px}
+  .nav-links{display:flex}
+  .hero{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);align-items:center;gap:64px;padding-block:56px 104px}
+  .h1{font-size:108px}
+  .pin-label{font-size:13px}
+  .steps{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+  .who-list{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:48px}
+  .pricing{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);align-items:start;gap:64px}
+  .faq{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:56px}
+  .h-cta{font-size:88px}
+}
+</style>
+<style>
+.legal{max-width:68ch;margin:0 auto;padding-block:56px 96px}
+.legal h1{font-size:44px;letter-spacing:-.02em;margin:0 0 8px}
+.legal .updated{color:var(--muted);font-size:14px;margin-bottom:32px}
+.legal h2{font-size:22px;margin:36px 0 12px}
+.legal p,.legal li{font-size:17px;line-height:1.65;color:#3a3f66}
+.legal ul{padding-left:22px}
+.legal li{margin-bottom:8px}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding-block:20px}
+</style>
+</head>
+<body>
+<header class="wrap topbar">
+  <a class="logo" href="index.html" aria-label="Turf home"><span class="logo-word">TURF</span></a>
+  <a class="btn btn-small" href="index.html#pricing" data-cta>Get your audit</a>
+</header>
+<main class="wrap">
+  <article class="legal">
+    <h1>Terms of Service</h1>
+    <p class="updated">Last updated: October 12, 2026</p>
+
+<p>These terms cover the Turf Audit service. By booking an audit, you agree to them. Plain version: you pay a flat $500, you get your audit within 7 days, and if it's not useful you get your money back.</p>
+
+<h2>The service</h2>
+<p>The Turf Audit is a one-time, done-for-you analysis. You send us a CSV of customer addresses (one per row, no names needed); within 7 days of receiving it, we deliver your Turf Report, which includes:</p>
+<ul>
+<li>Your customer heatmap with top ZIP codes and drive-time breakdown</li>
+<li>A demographic overlay of your core customer clusters</li>
+<li>8–12 ranked local sponsorship opportunities, each with a Turf Score and cost per reached household</li>
+<li>Our top 3 picks with contact information</li>
+<li>QR tracking setup for your first sponsorship so you can measure the return</li>
+</ul>
+
+<h2>Price and payment</h2>
+<p>The audit costs a flat $500, due when you book. No subscriptions, no hidden fees.</p>
+
+<h2>Money-back guarantee</h2>
+<p>If the audit isn't useful to you, tell us within 14 days of delivery and we'll refund the full $500. No forms, no interrogation.</p>
+
+<h2>What we don't promise</h2>
+<p>We rank opportunities by how many of your customer households each one reaches per dollar. We don't guarantee that a sponsorship will be available at the listed price, that a league or organizer will accept you, or any particular business result. Sponsorship inventory and pricing change; our research reflects what we find during your audit week.</p>
+
+<h2>Your responsibilities</h2>
+<p>You confirm you have the right to share the customer addresses you send us, and that you'll only send addresses — not names, emails, or phone numbers.</p>
+
+<h2>Intellectual property</h2>
+<p>The audit report we deliver is yours to use however you like. Our methods, scoring, and underlying tooling remain ours.</p>
+
+<h2>Limitation of liability</h2>
+<p>To the maximum extent allowed by law, our total liability for anything related to the audit is limited to the $500 you paid. We're not liable for indirect or consequential damages.</p>
+
+<h2>Changes</h2>
+<p>We may update these terms; the version in effect when you book applies to your audit.</p>
+
+<h2>Contact</h2>
+<p>Questions about these terms: <a href="mailto:hello@getturf.co">hello@getturf.co</a>.</p>
+
+  </article>
+</main>
+<footer class="wrap site-footer">
+  <div class="footer-left"><span class="logo-word">TURF</span><span>Own your turf.</span></div>
+  <div class="footer-right"><a href="mailto:hello@getturf.co">hello@getturf.co</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><span>&copy; 2026 Turf</span></div>
+</footer>
+<script>
+  const AUDIT_URL = "https://cal.com/tal-brown-caq1kh/15min";
+  if (AUDIT_URL) {
+    document.querySelectorAll("[data-cta]").forEach(a => { a.href = AUDIT_URL; a.target = "_blank"; a.rel = "noopener"; });
+  }
+</script>
+</body>
+</html>
